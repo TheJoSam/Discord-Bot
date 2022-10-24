@@ -17,7 +17,7 @@ For Users:
 
 For Developers:
  - Do not share Extensions/Commands with the claim that these Verified by Me until i allow it and it is visible in the [File for Verified Extensions/Commands].(VERIFIED_EXTENSIONS.md)
- - If you want your Extensions/Command approved make an issue (*exaple in issues*) on Discord and if special Information is needed i will expand this on E-Mail.
+ - If you want your Extensions/Command approved make an issue (*exaple in issues*)(only commands) extensions: https://forms.gle/b1JgeTB12AznfHQf9
  - Commands/Extensions are allowed to need functions from other Extension if this is the case please add this into your README.md
  - If I want your Extension/Command to be an part of the Bot I will notify you  
 
