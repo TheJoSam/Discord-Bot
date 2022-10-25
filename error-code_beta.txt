@@ -1,0 +1,10 @@
+1: Argument Missing
+2: required Argument is empty
+3: Argument not required type
+4: Too much Arguments
+5: Argument can't be found
+
+20: command load error
+21: no commands registered (must not be an error)
+
+500: user forced logout

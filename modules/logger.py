@@ -18,7 +18,7 @@ class logging:
         self.time = now.strftime(self.config['time_format'])
         self.overwrite = self.config['overwrite']
         
-        if not path.exists(self.config['std_log_file']):
+        if path.exists(self.config['std_log_file']) is False:
             with open(self.config['std_log_file'], 'w') as lf:
                 lf.write('')
                 
@@ -41,22 +41,59 @@ class logging:
             print(Fore.RED + '[{}][LOGGER][ERROR] {} raised an exception with error code {}: {}'.format(self.current_time(), module, str(error_code), message))
         self.log.write('[{}][LOGGER][ERROR] {} raised an exception with error code {}: {}'.format(self.current_time(), module, str(error_code), message))
     
-    def debug(self, message: str, extra: str):
+    def debug(self, message, extra = None):
+        if extra is None: extra = ''
+        elif type(extra) is not str:
+            self.on_error(message='extra argument is not type str: String expected', error_code=3, module='DEBUG')
+        elif extra is None: extra = ''
+        
+        if type(message) is not str:
+            self.on_error(message='message argument is not type str: String expected', error_code=3, module='DEBUG')
+        elif message == '': 
+            self.on_error(message='message argument is empty', error_code=2, module='DEBUG')
+        
         if self.config['output']:
             print(Fore.LIGHTBLACK_EX + '[{}][{}][DEBUG]{}: {}'.format(self.current_time(), self.module, extra, message))
         self.log.write('[{}][{}][DEBUG]{}: {}'.format(self.current_time(), self.module, extra, message))
     
-    def info(self, message: str, extra: str):
+    def info(self, message, extra = None):
+        if extra is None: extra = ''
+        elif type(extra) is not str:
+            self.on_error(message='extra argument is not type str: String expected', error_code=3, module='INFO')
+        
+        if type(message) is not str:
+            self.on_error(message='message argument is not type str: String expected', error_code=3, module='INFO')
+        elif message == '': 
+            self.on_error(message='message argument is empty', error_code=2, module='INFO')
+        
         if self.config['output']:
             print(Fore.WHITE + '[{}][{}][INFO]{}: {}'.format(self.current_time(), self.module, extra, message))
         self.log.write('[{}][{}][INFO]{}: {}'.format(self.current_time(), self.module, extra, message))
     
-    def warning(self, message: str, extra: str):
+    def warning(self, message, extra = None):
+        if extra is None: extra = ''
+        elif type(extra) is not str:
+            self.on_error(message='extra argument is not type str: String expected', error_code=3, module='WARNING')
+        
+        if type(message) is not str:
+            self.on_error(message='message argument is not type str: String expected', error_code=3, module='WARNING')
+        elif message == '': 
+            self.on_error(message='message argument is empty', error_code=2, module='WARNING')
+        
         if self.config['output']:
             print(Fore.YELLOW + '[{}][{}][WARN]{}: {}'.format(self.current_time(), self.module, extra, message))
         self.log.write('[{}][{}][WARN]{}: {}'.format(self.current_time(), self.module, extra, message))
     
-    def error(self, message: str, extra: str):
+    def error(self, message, extra = None):
+        if extra is None: extra = ''
+        elif type(extra) is not str:
+            self.on_error(message='extra argument is not type str: String expected', error_code=3, module='ERROR')
+        
+        if type(message) is not str:
+            self.on_error(message='message argument is not type str: String expected', error_code=3, module='ERROR')
+        elif message == '': 
+            self.on_error(message='message argument is empty', error_code=2, module='ERROR')
+            
         if self.config['output']:
             print(Fore.RED + '[{}][{}][ERROR]{}: {}'.format(self.current_time(), self.module, extra, message))
         self.log.write('[{}][{}][ERROR]{}: {}'.format(self.current_time(), self.module, extra, message))
