@@ -39,7 +39,7 @@ class logging:
         if self.config['output']:
             print(Fore.RED + '{} raised an exception with error code {}: {}'.format(module, str(error_code), message))
             print(Fore.RED + '[{}][LOGGER][ERROR] {} raised an exception with error code {}: {}'.format(self.current_time(), module, str(error_code), message))
-        self.log.write('[{}][LOGGER][ERROR] {} raised an exception with error code {}: {}'.format(self.current_time(), module, str(error_code), message))
+        self.log.write('[{}][LOGGER][ERROR] {} raised an exception with error code {}: {}\n'.format(self.current_time(), module, str(error_code), message))
     
     def debug(self, message, extra = None):
         if extra is None: extra = ''
@@ -54,7 +54,7 @@ class logging:
         
         if self.config['output']:
             print(Fore.LIGHTBLACK_EX + '[{}][{}][DEBUG]{}: {}'.format(self.current_time(), self.module, extra, message))
-        self.log.write('[{}][{}][DEBUG]{}: {}'.format(self.current_time(), self.module, extra, message))
+        self.log.write('[{}][{}][DEBUG]{}: {}\n'.format(self.current_time(), self.module, extra, message))
     
     def info(self, message, extra = None):
         if extra is None: extra = ''
@@ -68,7 +68,7 @@ class logging:
         
         if self.config['output']:
             print(Fore.WHITE + '[{}][{}][INFO]{}: {}'.format(self.current_time(), self.module, extra, message))
-        self.log.write('[{}][{}][INFO]{}: {}'.format(self.current_time(), self.module, extra, message))
+        self.log.write('[{}][{}][INFO]{}: {}\n'.format(self.current_time(), self.module, extra, message))
     
     def warning(self, message, extra = None):
         if extra is None: extra = ''
@@ -82,7 +82,7 @@ class logging:
         
         if self.config['output']:
             print(Fore.YELLOW + '[{}][{}][WARN]{}: {}'.format(self.current_time(), self.module, extra, message))
-        self.log.write('[{}][{}][WARN]{}: {}'.format(self.current_time(), self.module, extra, message))
+        self.log.write('[{}][{}][WARN]{}: {}\n'.format(self.current_time(), self.module, extra, message))
     
     def error(self, message, extra = None):
         if extra is None: extra = ''
@@ -96,4 +96,4 @@ class logging:
             
         if self.config['output']:
             print(Fore.RED + '[{}][{}][ERROR]{}: {}'.format(self.current_time(), self.module, extra, message))
-        self.log.write('[{}][{}][ERROR]{}: {}'.format(self.current_time(), self.module, extra, message))
+        self.log.write('[{}][{}][ERROR]{}: {}\n'.format(self.current_time(), self.module, extra, message))

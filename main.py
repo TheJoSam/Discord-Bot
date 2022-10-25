@@ -16,6 +16,7 @@ extensions = json.load(extension_file)
 extension_file.close()
 
 logger = log_module.logging(module='MAIN')
+logger.info(message='Logging module loaded')
 
 global loaded_commands
 global loaded_extensions
