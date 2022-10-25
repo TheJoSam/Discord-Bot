@@ -31,4 +31,4 @@ For Developers:
 - [ ] command line addition
 - [ ] User Interface with own User accounts for Staff Members
 
-<sub> If you have Question feel free to ask me on my E-Mail: TheJoSam.Developmnent@gmail.com</sub>
+<sub> If you have Question feel free to ask me on my E-Mail: TheJoSam.Development@gmail.com</sub>
