@@ -1,1 +1,4 @@
 config/main.json
+logs/latest.log
+user_register.csv
+*.pyc
