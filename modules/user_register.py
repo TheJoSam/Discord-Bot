@@ -11,9 +11,8 @@ register_file = 'data/user_register.csv'
 
 if not os.path.exists(register_file):
     with open(register_file, 'w') as user_register:
-        fieldnames = ['tuuid', 'discord_user_id', 'discord_join_date', 'server_join_date']
-        user_register_writer = csv.DictWriter(user_register, fieldnames=fieldnames)
-        user_register_writer.writeheader()
+        fieldnames = 'tuuid,discord_user_id,discord_join_date,server_join_date'
+        user_register.write(fieldnames + '\n')
 
 def register_user(user_id, join_date, server_join_date):
     global exists
@@ -29,18 +28,18 @@ def register_user(user_id, join_date, server_join_date):
     
     try: 
         with open(register_file, 'r') as user_register:
-            user_register_reader = csv.DictReader(user_register)
+            user_register_reader = user_register.readlines()
             line_count = 0
-            for row in user_register_reader:
-                if line_count is 0:
+            for item in user_register_reader:
+                data = item.split(',')
+                print(data)
+                if line_count == 0:
                     line_count += 1
                     continue
-                elif user_id in row['discord_user_id']:
+                elif user_id in data[1]:
                     logger.error(message = 'called an exception with errorcode 52', extra = '[register_user]')
                     exists = True
                     break
-                else:
-                    continue
                 
     except Exception as ex: logger.error(message = f'raised an exception errorcode 57: {ex}', extra = '[register_user]')
     
@@ -54,3 +53,26 @@ def register_user(user_id, join_date, server_join_date):
             user_register_writer.writerow(user)
         else:
             logger.error(message = 'canceled user registration with errorcode 52', extra = '[register_user]')
+
+
+def get_user(user_id):
+    if type(user_id) is not str:
+        logger.error(message = 'called an error with errorcode 3: Argument not required type (str)', extra = '[get_user]')
+    
+    try: 
+        with open(register_file, 'r') as user_register:
+            user_register_reader = user_register.readlines()
+            line_count = 0
+            for item in user_register_reader:
+                data = item.split(',')
+                print(data)
+                if line_count == 0:
+                    line_count += 1
+                    continue
+                elif user_id not in data[1]:
+                    logger.error(message = 'called an exception with errorcode 54', extra = '[register_user]')
+                    break
+                else:
+                    return data
+                
+    except Exception as ex: logger.error(message = f'raised an exception errorcode 57: {ex}', extra = '[register_user]')
