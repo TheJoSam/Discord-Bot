@@ -25,7 +25,7 @@ For Developers:
 
 ## Future Plans
 
-- [ ] Finish basic Framework
+- [x] Finish basic Framework
 - [ ] better User Interface
 - [ ] add new Features
 - [ ] command line addition
